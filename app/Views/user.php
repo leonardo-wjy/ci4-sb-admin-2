@@ -219,6 +219,7 @@
 <script>
     let sort = "name";
     let sortType = "asc";
+    let session_id = <?= session()->get("login")->user_id; ?>;
 
     const change_password_show_hide = function() {
         var x = document.getElementById("passwd");
@@ -628,6 +629,7 @@
             cancelButtonText: 'Batal',
         }).then((result) => {
             if (result.isConfirmed) {
+                let id_before = $(this).data('id');
                 $.ajax({
                     url : "<?= base_url("user/delete"); ?>",
                     type: "POST",
@@ -650,6 +652,12 @@
                                 title: response.message,
                                 confirmButtonColor: '#4e73df',
                             })
+                        }
+
+                        console.log(session_id, id_before)
+                        if(session_id === id_before)
+                        {
+                            window.location.href = "logout";
                         }
                     },
                     onError: function(err) {
