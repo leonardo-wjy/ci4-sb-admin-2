@@ -1,3 +1,8 @@
+<?php
+$currentUriSegment = service('uri')->getSegment(1);
+$setting = ['user'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -87,7 +92,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item <?= ($currentUriSegment === 'home' ? "active" : null) ?>">
                 <a class="nav-link" href="<?= base_url('home');?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -133,15 +138,15 @@
             </li>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item <?= (in_array($currentUriSegment, $setting) ? "active" : null) ?>">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Pengaturan</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseTwo" class="collapse <?= (in_array($currentUriSegment, $setting) ? "show" : null) ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?= base_url('user');?>">Pengguna</a>
+                        <a class="collapse-item <?= (in_array($currentUriSegment, $setting) ? "active" : null) ?>" href="<?= base_url('user');?>">Pengguna</a>
                     </div>
                 </div>
             </li>

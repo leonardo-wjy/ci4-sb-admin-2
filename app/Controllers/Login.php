@@ -47,24 +47,36 @@ class Login extends BaseController
                 $email      = $this->request->getPost("email");
                 $password   = $this->request->getPost("password");
 
-                $results = $this->userModel->login($email, md5($password));
+                $results = $this->userModel->checkEmail($email);
 
-                if($results) {
-                    $session = (object) [
-                        "isLogin" => true,
-                        "user_id" => $results[0]["user_id"],
-                        "email" => $results[0]["email"],
-                        "name" => $results[0]["name"],
-                        "role" => $results[0]["role"],
-                    ];
+                if (count($results) > 0) {
+                    $authenticatePassword = password_verify($password, $results[0]['password']);
+                    if ($authenticatePassword) 
+                    {
+                        $session = (object) [
+                            "isLogin" => true,
+                            "user_id" => $results[0]["user_id"],
+                            "email" => $results[0]["email"],
+                            "name" => $results[0]["name"],
+                            "role" => $results[0]["role"],
+                        ];
 
-                    session()->setTempdata("login", $session, 36000);
-                    
-                    $data = [
-                        "status"            => true,
-                        "message"    => "Login Berhasil"
-                    ];
-                    echo json_encode($data);
+                        session()->setTempdata("login", $session, 36000);
+                        
+                        $data = [
+                            "status"            => true,
+                            "message"    => "Login Berhasil"
+                        ];
+                        echo json_encode($data);
+                    }
+                    else
+                    {
+                        $data = [
+                            "status"            => false,
+                            "message"    => "Login Gagal!"
+                        ];
+                        echo json_encode($data);
+                    }
                 } else {
                     $data = [
                         "status"            => false,

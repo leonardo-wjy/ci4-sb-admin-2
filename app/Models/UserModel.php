@@ -20,7 +20,6 @@ class UserModel extends Model
         'email',
         'phone',
         'password',
-        'status',
         'createdAt',
         'updatedAt',
         'deletedAt'
@@ -50,12 +49,11 @@ class UserModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function login($email, $password)
+    public function checkId($id)
     {
         $arrCondition = [
             'deletedAt' => null,
-            'email' => $email,
-            'password' => $password
+            'user_id' => $id
         ];
 
         $builder = $this->db->table('user');
@@ -63,5 +61,66 @@ class UserModel extends Model
         $query = $builder->get();
 
         return $query->getResultArray();
+    }
+
+    public function checkEmail($email)
+    {
+        $arrCondition = [
+            'deletedAt' => null,
+            'email' => $email
+        ];
+
+        $builder = $this->db->table('user');
+        $builder->where($arrCondition);
+        $query = $builder->get();
+
+        return $query->getResultArray();
+    }
+
+    public function getList($condition, $addCondition, $limit = 10, $offset = 0)
+    {
+        $availableSort = [
+            'name'              => 'name',
+            'role'              => 'role',
+            'email'             => 'email',
+            'phone'             => 'phone',
+            'createdAt'         => 'createdAt',
+            'updatedAt'         => 'updatedAt',
+        ];
+        $availableSortType = ['asc' => 'ASC', 'desc' => 'DESC'];
+
+        $sort = $availableSort[$addCondition['sort'] ?? 'createdAt'] ?? 'user.createdAt';
+        $sortType = $availableSortType[$addCondition['sortType'] ?? 'desc'] ?? 'DESC';
+
+        $selectQry = "user.*";
+        $dataQry = $this->asObject()
+            ->select($selectQry)
+            ->where($condition)
+            ->orderBy($sort, $sortType);
+
+        $totalData = $dataQry->countAllResults(false);
+
+        if ($addCondition['search']) {
+            $dataQry->groupStart();
+        }
+
+        if ($addCondition['search']) {
+            $dataQry->like('email', $addCondition['search'])->orLike('name', $addCondition['search'])->orLike('phone', $addCondition['search']);
+        }
+
+        if ($addCondition['search']) {
+            $dataQry->groupEnd();
+        }
+
+        $totalFilteredData = $dataQry->countAllResults(false);
+        $data = $dataQry->findAll($limit, $offset);
+
+        return [
+            'data'              => $data,
+            'totalData'         => $totalData,
+            'totalFilteredData' => $totalFilteredData,
+            'sort'  => $sort,
+            'sortType'  => $sortType
+        ];
     }
 }

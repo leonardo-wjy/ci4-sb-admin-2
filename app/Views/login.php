@@ -38,7 +38,7 @@
                                     <form class="login-form" method="POST"  autocomplete="off">
                                         <div class="form-group mb-3">
                                             <label class="control-label">Email<span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control email" id="exampleInputEmail" name="email" aria-describedby="emailHelp" placeholder="Email" maxlength="15">
+                                            <input type="text" class="form-control email" id="exampleInputEmail" name="email" aria-describedby="emailHelp" placeholder="Email">
                                         </div>
 
                                         <div class="form-group mb-5">

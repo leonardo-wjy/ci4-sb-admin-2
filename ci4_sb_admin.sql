@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2024 at 10:52 AM
+-- Generation Time: Jan 26, 2024 at 12:20 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -161,15 +161,16 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `role`, `name`, `email`, `phone`, `password`, `createdAt`, `updatedAt`, `deletedAt`) VALUES
-(1, 'Admin', 'tes', 'tes@gmail.com', '08122288282', '4297f44b13955235245b2497399d7a93', '2022-01-13 12:00:00', '2022-01-13 12:00:00', NULL),
-(2, 'Peminjam', 'tester', 'tesssst@test.com', '08272772', '4297f44b13955235245b2497399d7a93', '2022-01-13 12:00:00', '2022-01-13 12:00:00', NULL),
-(3, 'Admin', 'testertes', 'teeeest@test.com', '08272772', '4297f44b13955235245b2497399d7a93', '2022-01-13 12:00:00', '2022-01-13 12:00:00', NULL),
-(4, 'Admin', 'testerr', 'tester@test.com', '08272772', '4297f44b13955235245b2497399d7a93', '2022-01-13 13:00:00', '2022-01-13 16:00:00', NULL),
-(5, 'Admin', 'teesterr', 'tester@tester.com', '08272772', '4297f44b13955235245b2497399d7a93', '2022-01-13 14:00:00', '2022-01-13 14:00:00', NULL),
-(6, 'Peminjam', 'abcde', 'abcde@gmail.com', '082727797', '4297f44b13955235245b2497399d7a93', '2022-01-14 12:00:00', '2023-01-16 11:47:04', NULL),
-(7, 'Admin', 'Bagas', 'bagas@gmail.com', '08272772', '4297f44b13955235245b2497399d7a93', '2023-01-16 11:38:28', '2023-01-16 11:46:48', NULL),
-(8, 'Admin', 'Terbaru', 'testbaru@test.com', '08272772', '4297f44b13955235245b2497399d7a93', '2023-01-18 05:09:06', '2023-01-18 05:09:18', NULL),
-(9, 'Peminjam', 'Bayu', 'bayu@gmail.com', '08272772', '4297f44b13955235245b2497399d7a93', '2023-01-19 01:43:28', '2023-01-19 01:43:28', NULL);
+(1, 'Admin', 'tes', 'tes@gmail.com', '08122288282', '$2y$10$eGuGVodW/LVZWM3nfzr9S.B1hAnhEqxWre2LLzkfr30JlCaQRJ0bW', '2022-01-13 12:00:00', '2022-01-13 12:00:00', NULL),
+(2, 'Peminjam', 'tester', 'tesssst@test.com', '08272772', '$2y$10$eGuGVodW/LVZWM3nfzr9S.B1hAnhEqxWre2LLzkfr30JlCaQRJ0bW', '2022-01-13 12:00:00', '2022-01-13 12:00:00', NULL),
+(3, 'Admin', 'testertes', 'teeeest@test.com', '08272772', '$2y$10$eGuGVodW/LVZWM3nfzr9S.B1hAnhEqxWre2LLzkfr30JlCaQRJ0bW', '2022-01-13 12:00:00', '2022-01-13 12:00:00', NULL),
+(4, 'Admin', 'testerr', 'tester@test.com', '08272772', '$2y$10$eGuGVodW/LVZWM3nfzr9S.B1hAnhEqxWre2LLzkfr30JlCaQRJ0bW', '2022-01-13 13:00:00', '2022-01-13 16:00:00', NULL),
+(5, 'Admin', 'teesterr', 'tester@tester.com', '08272772', '$2y$10$eGuGVodW/LVZWM3nfzr9S.B1hAnhEqxWre2LLzkfr30JlCaQRJ0bW', '2022-01-13 14:00:00', '2022-01-13 14:00:00', NULL),
+(6, 'Peminjam', 'abcde', 'abcde@gmail.com', '082727797', '$2y$10$eGuGVodW/LVZWM3nfzr9S.B1hAnhEqxWre2LLzkfr30JlCaQRJ0bW', '2022-01-14 12:00:00', '2023-01-16 11:47:04', NULL),
+(7, 'Admin', 'Bagas', 'bagas@gmail.com', '08272772', '$2y$10$eGuGVodW/LVZWM3nfzr9S.B1hAnhEqxWre2LLzkfr30JlCaQRJ0bW', '2023-01-16 11:38:28', '2023-01-16 11:46:48', NULL),
+(8, 'Admin', 'Terbaru', 'testbaru@test.com', '08272772', '$2y$10$eGuGVodW/LVZWM3nfzr9S.B1hAnhEqxWre2LLzkfr30JlCaQRJ0bW', '2023-01-18 05:09:06', '2023-01-18 05:09:18', NULL),
+(9, 'Peminjam', 'Bayu', 'bayu@gmail.com', '08272772', '$2y$10$eGuGVodW/LVZWM3nfzr9S.B1hAnhEqxWre2LLzkfr30JlCaQRJ0bW', '2023-01-19 01:43:28', '2023-01-19 01:43:28', NULL),
+(10, 'Admin', 'aaadqew', 'tes234@gmail.com', '028818218', '$2y$10$JDi.Ul8tNlw7e/ICOZs/KOFhYZqOloQ5iI5CTWFSqN40w6vvk/xt6', '2024-01-26 10:22:38', '2024-01-26 18:19:12', '2024-01-26 18:19:12');
 
 --
 -- Indexes for dumped tables
@@ -237,7 +238,7 @@ ALTER TABLE `pinjam`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `user_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -40,3 +40,11 @@ $routes->group('', function ($routes) {
 $routes->group('home', ['filter' => 'Auth'], function ($routes) {
     $routes->get('', 'Home::index');
 });
+
+$routes->group('user', ['filter' => 'Auth'], function ($routes) {
+    $routes->get('', 'User::index');
+    $routes->get('all', 'User::all');
+    $routes->post('create', 'User::create');
+    $routes->post('update/(:num)', 'User::update/$1');
+    $routes->post('delete', 'User::remove');
+});
